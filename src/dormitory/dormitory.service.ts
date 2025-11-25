@@ -27,7 +27,10 @@ export class DormitoryService {
    * @param dto - The data transfer object containing updated dormitory data.
    * @returns A promise that resolves to the updated DormitoryEntity.
    */
-  async update(id: string, dto: UpdateDormitoryDto): Promise<DormitoryEntity | null> {
+  async update(
+    id: string,
+    dto: UpdateDormitoryDto,
+  ): Promise<DormitoryEntity | null> {
     await this.dormitoryRepository.update(id, dto);
     return this.dormitoryRepository.findOne({ where: { id } });
   }
