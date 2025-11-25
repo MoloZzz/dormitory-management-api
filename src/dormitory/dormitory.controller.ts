@@ -14,7 +14,7 @@ import { UpdateDormitoryDto } from './dto/update-dormitory.dto';
 import { IdParamDto } from 'src/common/dtos/id-param.dto';
 
 @ApiTags('Dormitories')
-@Controller('dormitories')
+@Controller('/api/dormitories')
 export class DormitoryController {
   constructor(private readonly dormitoryService: DormitoryService) {}
 
