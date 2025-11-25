@@ -16,12 +16,12 @@ export class AuthService {
 
   async register(dto: RegisterDto) {
     const exists = await this.usersRepo.findOne({
-      where: { email: dto.email },
+      where: { login: dto.login },
     });
     if (exists) throw new UnauthorizedException('User already exists');
 
     const user = this.usersRepo.create({
-      email: dto.email,
+      login: dto.login,
       fullname: dto.fullname,
       passwordHash: await bcrypt.hash(dto.password, 10),
     });
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   async login(dto: LoginDto) {
-    const user = await this.usersRepo.findOne({ where: { email: dto.email } });
+    const user = await this.usersRepo.findOne({ where: { login: dto.login } });
     if (!user) throw new UnauthorizedException('Invalid credentials');
 
     const isValid = await bcrypt.compare(dto.password, user.passwordHash);
@@ -56,7 +56,7 @@ export class AuthService {
       token,
       user: {
         id: user.id,
-        email: user.email,
+        login: user.login,
         fullname: user.fullname,
       },
     };

@@ -6,7 +6,7 @@ export class UserEntity {
   id: string;
 
   @Column({ unique: true })
-  email: string;
+  login: string;
 
   @Column()
   passwordHash: string;
