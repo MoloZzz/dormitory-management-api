@@ -6,6 +6,7 @@ import { LoggerModule } from './logger/logger.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { StudentsModule } from './students/students.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AuthModule } from './auth/auth.module';
     DormitoryModule,
     LoggerModule.register('DormitoryManagementAPI'),
     AuthModule,
+    StudentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
