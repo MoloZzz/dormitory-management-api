@@ -15,7 +15,9 @@ export class AuthService {
   ) {}
 
   async register(dto: RegisterDto) {
-    const exists = await this.usersRepo.findOne({ where: { email: dto.email } });
+    const exists = await this.usersRepo.findOne({
+      where: { email: dto.email },
+    });
     if (exists) throw new UnauthorizedException('User already exists');
 
     const user = this.usersRepo.create({

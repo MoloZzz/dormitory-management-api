@@ -22,11 +22,9 @@ import { AuthModule } from './auth/auth.module';
           type: 'postgres',
           url: config.get('DATABASE_URL'),
           autoLoadEntities: true,
-          synchronize: true,
+          synchronize: config.get('DATABASE_SYNC') === 'true',
 
-          ssl: sslEnabled
-            ? { rejectUnauthorized: false }
-            : false,
+          ssl: sslEnabled ? { rejectUnauthorized: false } : false,
         };
       },
     }),
