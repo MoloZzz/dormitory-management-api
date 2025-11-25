@@ -22,8 +22,9 @@ export class AuthService {
 
     const user = this.usersRepo.create({
       login: dto.login,
-      fullname: dto.fullname,
+      fullName: dto.fullName,
       passwordHash: await bcrypt.hash(dto.password, 10),
+      role: dto.role,
     });
 
     await this.usersRepo.save(user);
@@ -57,7 +58,7 @@ export class AuthService {
       user: {
         id: user.id,
         login: user.login,
-        fullname: user.fullname,
+        fullName: user.fullName,
       },
     };
   }

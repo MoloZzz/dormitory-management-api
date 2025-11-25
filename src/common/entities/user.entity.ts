@@ -5,12 +5,15 @@ export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true })
+  @Column({ type: 'varchar', length: 255, unique: true })
   login: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   passwordHash: string;
 
-  @Column()
-  fullname: string;
+  @Column({ type: 'varchar', length: 255 })
+  fullName: string;
+
+  @Column({ type: 'varchar', length: 255, default: 'student' })
+  role: 'student' | 'worker';
 }
